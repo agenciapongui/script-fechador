@@ -157,7 +157,7 @@ input.invalid,select.invalid{border-color:var(--red);background-color:#fff7f7}
 }
 .success .btn-cal2:hover{background:var(--red);color:#fff}
 .success .btn-cal2 .lbl{display:block;font-size:10.5px;font-weight:700;letter-spacing:.15em;opacity:.85;margin-bottom:4px}
-.success .email-note{font-size:13px;color:var(--gray-text);margin-top:22px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+.success .email-note,.success .email-note p{font-size:13px;color:var(--gray-text);margin-top:22px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
 
 /* ===== footer ===== */
 footer{background:var(--dark);color:#fff;padding:32px 20px;text-align:center;font-size:13px;line-height:1.7}
@@ -367,10 +367,17 @@ footer .dis{max-width:760px;margin:8px auto 0;color:#b9b9b9;font-size:12px}
           Agendar minha reunião com o especialista →
         </a>
       </div>
-      <p class="email-note">
-        <b>OU pelo e-mail:</b> a Hotmart envia automaticamente um e-mail com o link de download direto pro arquivo, em até 5 minutos após a aprovação do pagamento. Não achou? Confira <b>caixa de spam</b>, <b>promoções</b> e <b>outras pastas</b> com o remetente <i>"Hotmart"</i>.<br><br>
-        Se mesmo assim não chegar, ou se você tiver qualquer dificuldade pra acessar pelo botão acima, fale com a gente: <a href="mailto:danielpadilha@pongui.com.br" style="color:var(--red);font-weight:600">danielpadilha@pongui.com.br</a>.
-      </p>
+      <div class="email-note">
+        <p><b>Não conseguiu acessar pelo botão acima?</b> Sem problema — a Hotmart também envia o link de acesso ao Script Fechador direto no <b>seu e-mail</b>, em até 5 minutos após a aprovação do pagamento.</p>
+        <p style="margin-top:14px;"><b>📬 Se não achar na caixa de entrada:</b></p>
+        <ul style="margin-top:8px;text-align:left;padding-left:20px;line-height:1.7;">
+          <li>Verifique a pasta de <b>SPAM / Lixo eletrônico</b></li>
+          <li>Verifique a aba <b>Promoções</b> (Gmail)</li>
+          <li>Verifique <b>Social</b> e <b>Outras</b></li>
+          <li>Procure pelo remetente <b><i>"Hotmart"</i></b></li>
+        </ul>
+        <p style="margin-top:14px;">Se mesmo assim não chegar, ou tiver qualquer dificuldade, fala com a gente que a gente libera manualmente: <a href="mailto:danielpadilha@pongui.com.br" style="color:var(--red);font-weight:600">danielpadilha@pongui.com.br</a>.</p>
+      </div>
     </div>
   </div>
 </section>
