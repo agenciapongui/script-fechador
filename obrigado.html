@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2258621204527940');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2258621204527940&ev=Purchase&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<title>Obrigado · Script Fechador</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#AD1F1F; --red-dark:#990A0A; --gray-bg:#E7E7E7; --dark:#303030;
+  --gray-text:#707070; --green:#049A6A; --brown:#66353A;
+  --pink:#FFF1F4; --mint:#F3FFFB; --radius:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--gray-text);background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img,svg{max-width:100%;display:block}
+b,strong{font-weight:700;color:inherit}
+.divider-red{height:6px;background:var(--red)}
+
+/* ===== progress bar ===== */
+.progress{background:#fff;padding:18px 20px;border-bottom:1px solid #ececec}
+.progress .wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:9px}
+.progress .label{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px;color:var(--red);letter-spacing:.08em;text-transform:uppercase}
+.progress .label .pct{font-weight:800;font-size:18px}
+.progress .bar{height:10px;background:#ececec;border-radius:99px;overflow:hidden}
+.progress .bar .fill{height:100%;width:92%;background:linear-gradient(90deg,var(--red),var(--red-dark));border-radius:99px;transition:width .6s ease}
+
+/* ===== head ===== */
+.head{background:#fff;padding:38px 20px 22px;text-align:center}
+.head .wrap{max-width:760px;margin:0 auto}
+.head .logo{display:inline-flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.18em;font-size:13px;color:var(--red);margin-bottom:22px}
+.head .logo .dia{width:11px;height:11px;background:var(--red);transform:rotate(45deg);border-radius:2px}
+.head h1{font-weight:800;font-size:32px;line-height:1.18;color:var(--red);margin-bottom:16px;letter-spacing:-.01em}
+.head .sub{font-size:18px;color:#000;max-width:620px;margin:0 auto;line-height:1.55}
+
+/* ===== form ===== */
+.form-section{background:var(--gray-bg);padding:42px 20px 80px}
+.form-section .wrap{max-width:760px;margin:0 auto}
+.form-card{background:#fff;border-radius:var(--radius);padding:36px 36px 30px;box-shadow:0 6px 24px rgba(0,0,0,.05)}
+
+.field{margin-bottom:24px}
+.field:last-child{margin-bottom:0}
+.field .q{display:block;font-weight:600;font-size:16.5px;color:var(--dark);margin-bottom:10px;line-height:1.4}
+.field .q .req{color:var(--red);margin-left:3px}
+
+input[type=text],input[type=tel],input[type=email],select{
+  width:100%;padding:14px 16px;border:1.5px solid #d6d6d6;border-radius:12px;
+  font-family:inherit;font-size:16px;color:#000;background:#fff;transition:border .15s,box-shadow .15s;
+  -webkit-appearance:none;appearance:none;
+}
+select{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23AD1F1F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat:no-repeat;background-position:right 16px center;padding-right:42px;
+}
+input:focus,select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(173,31,31,.12)}
+input.invalid,select.invalid{border-color:var(--red);background-color:#fff7f7}
+
+/* radio cards */
+.opts{display:grid;gap:10px}
+.opt{
+  position:relative;display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fff;
+  border:1.5px solid #d6d6d6;border-radius:12px;cursor:pointer;
+  font-size:15.5px;color:#000;transition:border .15s,background .15s;user-select:none;
+  line-height:1.35;
+}
+.opt:hover{border-color:#9a9a9a}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .dot{
+  flex:0 0 20px;height:20px;border-radius:50%;border:2px solid #b5b5b5;
+  display:flex;align-items:center;justify-content:center;transition:border .15s;
+}
+.opt input:checked + .dot{border-color:var(--red)}
+.opt input:checked + .dot::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--red)}
+.opt:has(input:checked){border-color:var(--red);background:#fff5f5}
+
+/* dois inputs lado a lado (UF + foco) */
+.row-uf-foco{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.row-uf-foco .uf-col{min-width:140px}
+.row-uf-foco .uf-col .q{font-size:14px;color:var(--gray-text);font-weight:600;margin-bottom:8px}
+.row-uf-foco .foco-col .q{font-size:14px;color:var(--gray-text);font-weight:600;margin-bottom:8px}
+@media(max-width:560px){.row-uf-foco{grid-template-columns:1fr}}
+
+/* conditional Q11 */
+.conditional{display:none;background:#fff7f7;border:1.5px dashed var(--red);border-radius:14px;padding:20px;margin-top:16px;margin-bottom:24px}
+.conditional.show{display:block;animation:slidein .25s ease}
+@keyframes slidein{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.conditional .badge{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;padding:4px 10px;border-radius:99px;margin-bottom:12px;text-transform:uppercase}
+
+/* inline calendar CTA (quando marca "quero falar") */
+.cal-inline{display:none;margin-top:14px;padding:18px;background:linear-gradient(135deg,#049A6A,#04825c);color:#fff;border-radius:12px;text-align:center}
+.cal-inline.show{display:block;animation:slidein .25s ease}
+.cal-inline strong{display:block;font-size:14px;margin-bottom:12px;font-weight:600}
+.cal-inline .btn-cal{
+  display:inline-block;background:#fff;color:var(--green);text-decoration:none;
+  font-weight:700;padding:12px 22px;border-radius:10px;font-size:15px;transition:transform .12s;
+}
+.cal-inline .btn-cal:hover{transform:translateY(-1px)}
+
+/* submit */
+.submit-btn{
+  display:block;width:100%;background:var(--green);color:#fff;font-weight:800;
+  font-size:19px;text-align:center;padding:20px;border-radius:14px;border:none;cursor:pointer;
+  font-family:inherit;letter-spacing:.02em;transition:background .15s,transform .1s;
+  margin-top:10px;
+}
+.submit-btn:hover:not(:disabled){background:#03805a}
+.submit-btn:active:not(:disabled){transform:translateY(1px)}
+.submit-btn:disabled{opacity:.6;cursor:wait}
+.submit-btn .small{display:block;font-size:13px;font-weight:500;opacity:.9;margin-top:3px}
+
+/* error banner */
+.error-banner{background:#fff7f7;border:1.5px solid var(--red);border-radius:12px;padding:14px 18px;color:var(--red);font-size:14px;font-weight:600;margin-bottom:18px;display:none;line-height:1.5}
+.error-banner.show{display:block;animation:slidein .25s ease}
+
+/* ===== success view ===== */
+.success{display:none;text-align:center;background:#fff;border-radius:var(--radius);padding:48px 36px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.success.show{display:block;animation:slidein .3s ease}
+.success .check{
+  width:74px;height:74px;border-radius:50%;background:var(--green);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 24px;
+}
+.success .check svg{width:38px;height:38px;color:#fff}
+.success h2{font-size:28px;font-weight:800;color:var(--dark);margin-bottom:14px;line-height:1.2}
+.success > p{font-size:17px;color:#000;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.55}
+.success .actions{display:flex;flex-direction:column;gap:14px;max-width:430px;margin:0 auto}
+.success .btn-go{
+  display:block;background:var(--green);color:#fff;text-decoration:none;font-weight:800;font-size:19px;
+  padding:20px 22px;border-radius:14px;text-align:center;letter-spacing:.02em;transition:background .15s,transform .12s;
+}
+.success .btn-go:hover{background:#03805a;transform:translateY(-1px)}
+.success .btn-go .small{display:block;font-size:12.5px;font-weight:500;opacity:.9;margin-top:3px;letter-spacing:0}
+.success .btn-cal2{
+  display:block;background:#fff;color:var(--red);text-decoration:none;font-weight:800;font-size:17px;
+  padding:18px 22px;border:2px solid var(--red);border-radius:14px;text-align:center;transition:background .15s,color .15s;
+}
+.success .btn-cal2:hover{background:var(--red);color:#fff}
+.success .btn-cal2 .lbl{display:block;font-size:10.5px;font-weight:700;letter-spacing:.15em;opacity:.85;margin-bottom:4px}
+.success .email-note{font-size:13px;color:var(--gray-text);margin-top:22px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* ===== footer ===== */
+footer{background:var(--dark);color:#fff;padding:32px 20px;text-align:center;font-size:13px;line-height:1.7}
+footer .dis{max-width:760px;margin:8px auto 0;color:#b9b9b9;font-size:12px}
+
+/* ===== mobile ===== */
+@media(max-width:600px){
+  .head{padding:30px 18px 18px}
+  .head h1{font-size:24px}
+  .head .sub{font-size:16px}
+  .head .logo{font-size:11px;letter-spacing:.12em}
+  .form-section{padding:28px 14px 60px}
+  .form-card,.success{padding:24px 20px}
+  .field .q{font-size:15px}
+  .opt{font-size:14.5px;padding:12px 14px}
+  .submit-btn{font-size:17px;padding:18px}
+  .success h2{font-size:22px}
+  .success > p{font-size:15.5px}
+  .success .btn-go{font-size:17px;padding:18px}
+  .success .btn-cal2{font-size:15.5px;padding:16px}
+  .progress{padding:14px 16px}
+  .progress .label{font-size:12px}
+  .progress .label .pct{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="divider-red"></div>
+
+<div class="progress">
+  <div class="wrap">
+    <div class="label"><span>QUASE LÁ!</span><span class="pct">92%</span></div>
+    <div class="bar"><div class="fill"></div></div>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <div class="logo"><span class="dia"></span> DANIEL PADILHA · TRÁFEGO PARA ADVOGADOS</div>
+    <h1>ATENÇÃO: NÃO PULE ESSA ETAPA.</h1>
+    <p class="sub">Pra liberar o seu acesso ao Script Fechador de Contrato no WhatsApp, complete abaixo. Leva 1 minuto.</p>
+  </div>
+</header>
+
+<section class="form-section">
+  <div class="wrap">
+
+    <!-- formulário -->
+    <form class="form-card" id="qualForm" novalidate>
+      <div class="error-banner" id="errBanner"></div>
+
+      <!-- 1 -->
+      <div class="field">
+        <label class="q" for="nome">1. Nome completo<span class="req">*</span></label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+      </div>
+
+      <!-- 2 -->
+      <div class="field">
+        <label class="q" for="whatsapp">2. WhatsApp com DDD<span class="req">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" placeholder="(11) 99999-9999" required>
+      </div>
+
+      <!-- 3 -->
+      <div class="field">
+        <label class="q" for="email">3. E-mail<span class="req">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <!-- 4 -->
+      <div class="field">
+        <span class="q">4. Você é advogado(a) ou tem escritório?<span class="req">*</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="perfil" value="Sou advogado(a) com OAB"><span class="dot"></span>Sou advogado(a) com OAB</label>
+          <label class="opt"><input type="radio" name="perfil" value="Sou sócio(a)/dono(a) de escritório"><span class="dot"></span>Sou sócio(a) / dono(a) de escritório</label>
+          <label class="opt"><input type="radio" name="perfil" value="Trabalho na área, mas não sou advogado(a)"><span class="dot"></span>Trabalho na área, mas não sou advogado(a)</label>
+          <label class="opt"><input type="radio" name="perfil" value="Ainda não atuo na advocacia"><span class="dot"></span>Ainda não atuo na advocacia</label>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="field">
+        <span class="q">5. Você é quem decide sobre captação/marketing no escritório?<span class="req">*</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="decisor" value="Sim, sou eu"><span class="dot"></span>Sim, sou eu</label>
+          <label class="opt"><input type="radio" name="decisor" value="Decido junto com sócios"><span class="dot"></span>Decido junto com sócios</label>
+          <label class="opt"><input type="radio" name="decisor" value="Não, é outra pessoa"><span class="dot"></span>Não, é outra pessoa</label>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="field">
+        <label class="q" for="area">6. Sua principal área de atuação?<span class="req">*</span></label>
+        <select id="area" name="area" required>
+          <option value="">Selecione...</option>
+          <option>Previdenciário</option>
+          <option>Trabalhista</option>
+          <option>Família</option>
+          <option>Criminal</option>
+          <option>Cível</option>
+          <option>Tributário</option>
+          <option>Consumidor</option>
+          <option>Imobiliário</option>
+          <option>Empresarial</option>
+          <option>Outra</option>
+        </select>
+      </div>
+
+      <!-- 7 -->
+      <div class="field">
+        <span class="q">7. Estado e foco de captação<span class="req">*</span></span>
+        <div class="row-uf-foco">
+          <div class="uf-col">
+            <label class="q" for="uf">UF</label>
+            <select id="uf" name="uf" required>
+              <option value="">UF</option>
+              <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+              <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+              <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+              <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+              <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+              <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+              <option>SP</option><option>SE</option><option>TO</option>
+            </select>
+          </div>
+          <div class="foco-col">
+            <label class="q">Foco de captação</label>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="foco" value="Minha cidade/região"><span class="dot"></span>Minha cidade/região</label>
+              <label class="opt"><input type="radio" name="foco" value="Meu estado"><span class="dot"></span>Meu estado</label>
+              <label class="opt"><input type="radio" name="foco" value="Brasil todo"><span class="dot"></span>Brasil todo</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="field">
+        <span class="q">8. Você já investiu em tráfego pago pra captar cliente?<span class="req">*</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="trafego" value="Sim, com agência/gestor"><span class="dot"></span>Sim, com agência / gestor</label>
+          <label class="opt"><input type="radio" name="trafego" value="Sim, por conta própria"><span class="dot"></span>Sim, por conta própria</label>
+          <label class="opt"><input type="radio" name="trafego" value="Não, nunca"><span class="dot"></span>Não, nunca</label>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="field">
+        <span class="q">9. Quanto você pode investir por mês em tráfego (fora honorários de gestão)?<span class="req">*</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="investimento" value="Até R$ 500"><span class="dot"></span>Até R$ 500</label>
+          <label class="opt"><input type="radio" name="investimento" value="R$ 500 a R$ 1.500"><span class="dot"></span>R$ 500 a R$ 1.500</label>
+          <label class="opt"><input type="radio" name="investimento" value="R$ 1.500 a R$ 3.000"><span class="dot"></span>R$ 1.500 a R$ 3.000</label>
+          <label class="opt"><input type="radio" name="investimento" value="R$ 3.000 a R$ 5.000"><span class="dot"></span>R$ 3.000 a R$ 5.000</label>
+          <label class="opt"><input type="radio" name="investimento" value="Acima de R$ 5.000"><span class="dot"></span>Acima de R$ 5.000</label>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="field">
+        <span class="q">10. Qual seu objetivo principal agora?<span class="req">*</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="objetivo" value="Encher a agenda"><span class="dot"></span>Encher a agenda</label>
+          <label class="opt"><input type="radio" name="objetivo" value="Parar de depender de indicação"><span class="dot"></span>Parar de depender de indicação</label>
+          <label class="opt"><input type="radio" name="objetivo" value="Escalar o que já funciona"><span class="dot"></span>Escalar o que já funciona</label>
+          <label class="opt"><input type="radio" name="objetivo" value="Dominar minha região"><span class="dot"></span>Dominar minha região</label>
+        </div>
+      </div>
+
+      <!-- 11 (condicional) -->
+      <div class="conditional" id="q11">
+        <span class="badge">PERGUNTA EXTRA</span>
+        <div class="field" style="margin-bottom:0">
+          <span class="q">11. Topa uma reunião para entender como alavancar seu escritório?<span class="req">*</span></span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="reuniao" value="Quero falar com um especialista"><span class="dot"></span>Quero falar com um especialista</label>
+            <label class="opt"><input type="radio" name="reuniao" value="Agora não"><span class="dot"></span>Agora não</label>
+          </div>
+          <div class="cal-inline" id="calInline">
+            <strong>Excelente! Você pode já escolher um horário aqui:</strong>
+            <a class="btn-cal" href="https://calendar.app.google/tk4xgAgadEJpCMP2A" target="_blank" rel="noopener">Agendar minha reunião →</a>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        LIBERAR MINHAS 12 TESES
+        <span class="small">Clique e receba o acesso imediato</span>
+      </button>
+    </form>
+
+    <!-- success view -->
+    <div class="success" id="successView">
+      <div class="check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Tudo certo! Seu acesso está liberado.</h2>
+      <p>Você tem <b>duas formas</b> de baixar o Script Fechador de Contrato no WhatsApp:</p>
+      <div class="actions">
+        <a class="btn-go" href="https://consumer.hotmart.com/" target="_blank" rel="noopener">
+          LIBERAR MEU ACESSO
+          <span class="small">Entre na Área do Comprador da Hotmart com o e-mail da compra</span>
+        </a>
+        <a class="btn-cal2" id="btnCal" href="https://calendar.app.google/tk4xgAgadEJpCMP2A" target="_blank" rel="noopener" style="display:none">
+          <span class="lbl">BÔNUS RESERVADO PRA VOCÊ</span>
+          Agendar minha reunião com o especialista →
+        </a>
+      </div>
+      <p class="email-note">
+        <b>OU pelo e-mail:</b> a Hotmart envia automaticamente um e-mail com o link de download direto pro arquivo, em até 5 minutos após a aprovação do pagamento. Não achou? Confira <b>caixa de spam</b>, <b>promoções</b> e <b>outras pastas</b> com o remetente <i>"Hotmart"</i>.<br><br>
+        Se mesmo assim não chegar, ou se você tiver qualquer dificuldade pra acessar pelo botão acima, fale com a gente: <a href="mailto:danielpadilha@pongui.com.br" style="color:var(--red);font-weight:600">danielpadilha@pongui.com.br</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© Daniel Padilha · Tráfego para Advogados · 2026</div>
+  <div class="dis">Este site não é afiliado ao Facebook/Meta nem ao Google e não representa nenhuma dessas empresas.</div>
+</footer>
+
+<script>
+// ====================== Conditional Q11 ======================
+const investRadios = document.querySelectorAll('input[name="investimento"]');
+const reuniaoRadios = document.querySelectorAll('input[name="reuniao"]');
+const q11 = document.getElementById('q11');
+const calInline = document.getElementById('calInline');
+const TRIGGER_VALUES = ['R$ 1.500 a R$ 3.000', 'R$ 3.000 a R$ 5.000', 'Acima de R$ 5.000'];
+
+function evaluateQ11(){
+  const sel = document.querySelector('input[name="investimento"]:checked');
+  if (sel && TRIGGER_VALUES.includes(sel.value)) {
+    q11.classList.add('show');
+  } else {
+    q11.classList.remove('show');
+    reuniaoRadios.forEach(r => r.checked = false);
+    calInline.classList.remove('show');
+  }
+}
+investRadios.forEach(r => r.addEventListener('change', evaluateQ11));
+
+reuniaoRadios.forEach(r => {
+  r.addEventListener('change', () => {
+    if (r.checked && r.value === 'Quero falar com um especialista') {
+      calInline.classList.add('show');
+    } else if (r.checked) {
+      calInline.classList.remove('show');
+    }
+  });
+});
+
+// ====================== WhatsApp mask ======================
+const wa = document.getElementById('whatsapp');
+wa.addEventListener('input', (e) => {
+  let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+  let f = v;
+  if (v.length > 10) f = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+  else if (v.length > 6) f = `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+  else if (v.length > 2) f = `(${v.slice(0,2)}) ${v.slice(2)}`;
+  e.target.value = f;
+});
+
+// ====================== Submit ======================
+const form = document.getElementById('qualForm');
+const submitBtn = document.getElementById('submitBtn');
+const successView = document.getElementById('successView');
+const errBanner = document.getElementById('errBanner');
+const btnCal = document.getElementById('btnCal');
+const CRM_URL = 'https://crm.pongui.com.br/api/leads/intake?org=0c778ef2-445c-4b20-a9b4-ae88ce5e8dfe&token=62d45cbd84655b2f5497e6715323148f';
+
+function showError(msg){
+  errBanner.textContent = msg;
+  errBanner.classList.add('show');
+  errBanner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errBanner.classList.remove('show');
+  document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+
+  // collect values
+  const data = new FormData(form);
+  const nome = (data.get('nome')||'').trim();
+  const whatsapp = (data.get('whatsapp')||'').trim();
+  const email = (data.get('email')||'').trim();
+  const perfil = data.get('perfil');
+  const decisor = data.get('decisor');
+  const area = data.get('area');
+  const uf = data.get('uf');
+  const foco = data.get('foco');
+  const trafego = data.get('trafego');
+  const investimento = data.get('investimento');
+  const objetivo = data.get('objetivo');
+  const reuniao = data.get('reuniao');
+
+  // validate
+  const missing = [];
+  if (!nome) { missing.push('Nome'); document.getElementById('nome').classList.add('invalid'); }
+  if (!whatsapp || whatsapp.replace(/\D/g,'').length < 10) { missing.push('WhatsApp válido'); document.getElementById('whatsapp').classList.add('invalid'); }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { missing.push('E-mail válido'); document.getElementById('email').classList.add('invalid'); }
+  if (!perfil) missing.push('Pergunta 4');
+  if (!decisor) missing.push('Pergunta 5');
+  if (!area) { missing.push('Pergunta 6'); document.getElementById('area').classList.add('invalid'); }
+  if (!uf) { missing.push('UF'); document.getElementById('uf').classList.add('invalid'); }
+  if (!foco) missing.push('Foco de captação');
+  if (!trafego) missing.push('Pergunta 8');
+  if (!investimento) missing.push('Pergunta 9');
+  if (!objetivo) missing.push('Pergunta 10');
+  if (q11.classList.contains('show') && !reuniao) missing.push('Pergunta 11');
+
+  if (missing.length) {
+    showError('Faltam preencher: ' + missing.join(', ') + '.');
+    return;
+  }
+
+  // build mensagem (resumo das respostas)
+  const linhas = [
+    `Pré-qualificação · Script Fechador`,
+    ``,
+    `• Perfil: ${perfil}`,
+    `• Decisor sobre marketing: ${decisor}`,
+    `• Área de atuação: ${area}`,
+    `• Estado: ${uf} | Foco: ${foco}`,
+    `• Já investiu em tráfego: ${trafego}`,
+    `• Investimento mensal possível: ${investimento}`,
+    `• Objetivo principal: ${objetivo}`,
+  ];
+  if (reuniao) linhas.push(`• Reunião com especialista: ${reuniao}`);
+
+  // UTM capture — prioriza sessionStorage (persistido da LP), fallback URL
+  const qs = new URLSearchParams(location.search);
+  function getUTM(k){
+    return sessionStorage.getItem('pg_'+k) || qs.get(k) || '';
+  }
+  const utm_campaign = getUTM('utm_campaign') || 'script-fechador-obrigado';
+  const utm_source = getUTM('utm_source');
+  const utm_medium = getUTM('utm_medium');
+  const utm_content = getUTM('utm_content');
+  const utm_term = getUTM('utm_term');
+  const utm_id = getUTM('utm_id');
+  const fbclid = getUTM('fbclid');
+  if (utm_source || utm_medium || utm_content) {
+    linhas.push('', 'UTMs:',
+      `  source: ${utm_source}`,
+      `  medium: ${utm_medium}`,
+      `  campaign: ${utm_campaign}`,
+      `  content: ${utm_content}`,
+      `  term: ${utm_term}`,
+      `  id: ${utm_id}`,
+      fbclid ? `  fbclid: ${fbclid}` : ''
+    );
+  }
+
+  const payload = {
+    nome,
+    telefone: whatsapp,
+    email,
+    origem: 'Página de obrigado · Script Fechador',
+    campaign: utm_campaign,
+    mensagem: linhas.join('\n'),
+  };
+
+  // disable button
+  submitBtn.disabled = true;
+  const originalSmall = submitBtn.querySelector('.small').textContent;
+  submitBtn.querySelector('.small').textContent = 'Enviando…';
+
+  // POST → CRM (fail-open: mesmo se falhar, a gente libera o acesso porque o cara JÁ pagou)
+  let crmOk = false;
+  try {
+    const res = await fetch(CRM_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload),
+    });
+    crmOk = res.ok;
+    if (!res.ok) {
+      console.warn('CRM respondeu non-2xx:', res.status);
+    }
+  } catch (err) {
+    console.warn('Falha de rede ao enviar pro CRM:', err);
+  }
+
+  // fbq events: Lead bruto (todos) + Lead qualificado (budget >= R$ 1.500)
+  if (window.fbq) {
+    // Lead BRUTO — dispara pra QUALQUER submit do form
+    fbq('track', 'Lead', {
+      content_name: 'Pré-qualificação Script Fechador',
+      content_category: investimento,
+    });
+    // Lead QUALIFICADO — só dispara pra budget >= R$ 1.500
+    var QUALIFIED_BUDGETS = ['R$ 1.500 a R$ 3.000', 'R$ 3.000 a R$ 5.000', 'Acima de R$ 5.000'];
+    if (QUALIFIED_BUDGETS.indexOf(investimento) !== -1) {
+      fbq('track', 'Lead', {
+        content_name: 'Lead Qualificado Script Fechador',
+        content_category: investimento,
+      });
+    }
+    if (reuniao === 'Quero falar com um especialista') {
+      fbq('track', 'Schedule', { content_name: 'Agendou call estratégica' });
+    }
+  }
+
+  // show success
+  form.style.display = 'none';
+  if (reuniao === 'Quero falar com um especialista') {
+    btnCal.style.display = 'block';
+  }
+  successView.classList.add('show');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+</script>
+
+</body>
+</html>
