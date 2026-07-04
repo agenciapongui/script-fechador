@@ -436,53 +436,23 @@ const errBanner = document.getElementById('errBanner');
 const btnCal = document.getElementById('btnCal');
 const CRM_URL = 'https://crm.pongui.com.br/api/leads/intake?org=0c778ef2-445c-4b20-a9b4-ae88ce5e8dfe&token=62d45cbd84655b2f5497e6715323148f';
 
-// ====================== AUTO-CAPTURE (comprador que não preenche form) ======================
-// Hotmart passa parâmetros do comprador na URL do redirect. Capturamos e mandamos
-// pro CRM ao carregar a página — garante que TODO comprador chegue no CRM (mesmo que
-// nunca preencha o form). Se depois preencher, API tem dedup por telefone e atualiza.
-(async function autoCaptureBuyer(){
+// ====================== RETRY DE LEAD PENDENTE ======================
+// Se o submit anterior falhou (rede caiu, browser fechou antes de completar), 
+// tenta reenviar ao carregar a próxima página.
+(async function retryPendente(){
   try {
-    const qs = new URLSearchParams(location.search);
-    const email = qs.get('email') || qs.get('e-mail') || qs.get('buyer_email') || '';
-    const nome = qs.get('name') || qs.get('nome') || qs.get('buyer_name') || qs.get('customer_name') || '';
-    const telefone = qs.get('phone') || qs.get('telefone') || qs.get('whatsapp') || qs.get('buyer_phone') || '';
-    const transaction = qs.get('transaction') || qs.get('trx') || qs.get('order') || '';
-
-    if (!email && !telefone) return;
-
-    const utm_campaign = qs.get('utm_campaign') || 'script-fechador-comprador';
-    const utm_source = qs.get('utm_source') || '';
-    const utm_medium = qs.get('utm_medium') || '';
-
-    const linhas = [
-      'Comprador · Script Fechador (capturado automaticamente ao carregar /obrigado)',
-      '',
-      transaction ? '• Transação Hotmart: ' + transaction : null,
-      utm_source ? '• UTM source: ' + utm_source : null,
-      utm_medium ? '• UTM medium: ' + utm_medium : null,
-      '',
-      '⚠️ Este lead entrou automaticamente (comprador não preencheu o form de qualificação ainda). Se preencher depois, os dados são atualizados sem duplicar.',
-    ].filter(x => x !== null);
-
-    const payload = {
-      nome: nome || 'Comprador Script Fechador',
-      telefone: telefone,
-      email: email,
-      origem: 'Comprador · Script Fechador (auto-captura)',
-      campaign: utm_campaign,
-      mensagem: linhas.join('\n'),
-      labels: ['LT - Script Fechador'],
-      stage: 'Entrada de Leads',
-    };
-
-    await fetch(CRM_URL, {
+    const raw = localStorage.getItem('pg_lead_pendente');
+    if (!raw) return;
+    const res = await fetch(CRM_URL, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload),
+      body: raw,
     });
-  } catch (err) {
-    console.warn('Auto-capture do CRM falhou (silencioso):', err);
-  }
+    if (res.ok) {
+      localStorage.removeItem('pg_lead_pendente');
+      console.log('Lead pendente reenviado com sucesso ao CRM');
+    }
+  } catch(_) {}
 })();
 
 
@@ -587,13 +557,30 @@ form.addEventListener('submit', async (e) => {
   const originalSmall = submitBtn.querySelector('.small').textContent;
   submitBtn.querySelector('.small').textContent = 'Enviando…';
 
-  // POST → CRM (fail-open: mesmo se falhar, a gente libera o acesso porque o cara JÁ pagou)
+  // POST → CRM
+  // ROBUSTEZ TRIPLA:
+  //   1. sendBeacon PRIMEIRO — envio garantido mesmo se o usuário fechar a aba/browser
+  //      (é a única API que garante envio quando a página está sendo unloaded)
+  //   2. fetch ALÉM disso — pra ter feedback do res.ok
+  //   3. Se ambos falharem, salva no localStorage pra retry automático no próximo load
   let crmOk = false;
+  const bodyStr = JSON.stringify(payload);
+
+  // 1. sendBeacon: garante envio mesmo se aba fechar
+  try {
+    if (navigator.sendBeacon) {
+      const blob = new Blob([bodyStr], {type:'application/json'});
+      navigator.sendBeacon(CRM_URL, blob);
+    }
+  } catch(_) {}
+
+  // 2. fetch normal: pra saber se deu certo
   try {
     const res = await fetch(CRM_URL, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload),
+      body: bodyStr,
+      keepalive: true,  // permite continuar mesmo se página unloadar
     });
     crmOk = res.ok;
     if (!res.ok) {
@@ -601,6 +588,17 @@ form.addEventListener('submit', async (e) => {
     }
   } catch (err) {
     console.warn('Falha de rede ao enviar pro CRM:', err);
+  }
+
+  // 3. Se ambos falharam, salva pra retry no próximo load
+  if (!crmOk) {
+    try {
+      localStorage.setItem('pg_lead_pendente', bodyStr);
+      console.warn('Lead salvo pra retry automático no próximo load');
+    } catch(_) {}
+  } else {
+    // Limpa qualquer retry pendente já enviado
+    try { localStorage.removeItem('pg_lead_pendente'); } catch(_) {}
   }
 
   // fbq events: Lead bruto (todos) + Lead qualificado (budget >= R$ 1.500)
